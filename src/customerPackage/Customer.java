@@ -9,4 +9,12 @@ public class Customer {
         this.name = name;
         this.creditCard = new CreditCard(ccNumber);
     }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "name='" + name + '\'' +
+                ", creditCard=" + creditCard +
+                '}';
+    }
 }

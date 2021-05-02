@@ -12,12 +12,19 @@ public class ShoppingCart {
     // needs no arguments.
 
 
-    void  addProduct(Product product){
+    public void  addProduct(Product product){
         products.add(product);
     }
 
     //we need getPrice in class Product to  count total costs
-    int getTotalCost(){
+    public int getTotalCost(){
         return products.stream().mapToInt(Product::getPrice).sum();
+    }
+
+    @Override
+    public String toString() {
+        return "ShoppingCart{" +
+                "products=" + products +
+                '}';
     }
 }
