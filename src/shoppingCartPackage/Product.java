@@ -4,11 +4,15 @@ public class Product {
 
     private final String name;
     private int price;
+    private ProductType type;
 
-    public Product(String name, int price){
+    public Product(String name, int price, ProductType type){
         this.name = name;
         this.price = price;
+        this.type = type;
     }
+
+
 
     public int getPrice(){
         return price;

@@ -9,8 +9,9 @@ public class Catalogue {
     //alternative
     //Factory methods like this are increasingly popular as an alternative to constructors.
     private static Map<String, Product> productMap = Map.of(
-            "Electric Toothbrush", new Product("Electric Toothbrush", 3550),
-            "Baby Alarm", new Product("Baby Alarm", 3550)
+            "Electric Toothbrush", new Product("Electric Toothbrush", 3550, ProductType.PHYSICAL),
+            "Baby Alarm", new Product("Baby Alarm", 3550, ProductType.PHYSICAL),
+            "War and Peace (e-book)", new Product("War and Peace (e-book)", 100, ProductType.DIGITAL)
     );
 
     public static Product getProduct(String productName) {

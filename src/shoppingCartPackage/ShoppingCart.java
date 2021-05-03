@@ -5,26 +5,27 @@ import java.util.List;
 
 public class ShoppingCart {
 
+    private List<LineItem> lineItems = new ArrayList<>();
+    //private List<Product> lineItems = new ArrayList<>();
 
-    private List<Product> products = new ArrayList<>();
-
-    // A newly created shopping cart is empty, so the constructor
-    // needs no arguments.
-
-
-    public void  addProduct(Product product){
-        products.add(product);
+    public void addLineItem(LineItem lineItem) {
+        lineItems.add(lineItem);
     }
 
     //we need getPrice in class Product to  count total costs
     public int getTotalCost(){
-        return products.stream().mapToInt(Product::getPrice).sum();
+        return lineItems.stream().mapToInt(LineItem::getPrice)
+                .sum();
+    }
+
+    public List<LineItem> getLineItems() {
+        return lineItems;
     }
 
     @Override
     public String toString() {
         return "ShoppingCart{" +
-                "products=" + products +
+                "products=" + lineItems +
                 '}';
     }
 }
