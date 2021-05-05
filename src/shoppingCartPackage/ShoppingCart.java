@@ -21,7 +21,7 @@ public class ShoppingCart {
                 .sum();
     }
 
-    //DEFENSIVE COPYING 
+    //DEFENSIVE COPYING
     public List<LineItem> getLineItems() {
         return lineItems.stream()
                 .map(LineItem::new) //copy CONSTRUCTOR

@@ -23,6 +23,10 @@ public class Customer {
         return payment.map(value -> new Order(this, cart, value));
     }
 
+    public int calculateDiscount() {
+        return 0;
+    }
+
 
     @Override
     public String toString() {
