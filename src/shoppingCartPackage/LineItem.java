@@ -14,6 +14,15 @@ public class LineItem {
         this.quantity = quantity;
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
+    //Constructor
+    public LineItem(LineItem li) {
+        this(li.product, li.quantity);
+    }
+
     public Product getProduct(){
         return product;
     }

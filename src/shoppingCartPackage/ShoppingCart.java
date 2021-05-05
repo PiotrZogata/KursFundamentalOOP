@@ -2,6 +2,7 @@ package shoppingCartPackage;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ShoppingCart {
 
@@ -9,17 +10,22 @@ public class ShoppingCart {
     //private List<Product> lineItems = new ArrayList<>();
 
     public void addLineItem(LineItem lineItem) {
-        lineItems.add(lineItem);
-    }
+            lineItems.add(lineItem);
+        }
 
-    //we need getPrice in class Product to  count total costs
+
+
     public int getTotalCost(){
-        return lineItems.stream().mapToInt(LineItem::getPrice)
+        return lineItems.stream()
+                .mapToInt(LineItem::getPrice)
                 .sum();
     }
 
+    //DEFENSIVE COPYING 
     public List<LineItem> getLineItems() {
-        return lineItems;
+        return lineItems.stream()
+                .map(LineItem::new) //copy CONSTRUCTOR
+                .collect(Collectors.toList());
     }
 
     @Override

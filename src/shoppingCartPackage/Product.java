@@ -12,8 +12,6 @@ public class Product {
         this.type = type;
     }
 
-
-
     public int getPrice(){
         return price;
     }

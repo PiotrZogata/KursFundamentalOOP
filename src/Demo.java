@@ -19,6 +19,7 @@ public class Demo {
         cart.addLineItem(new LineItem(babyAlarm, 1));
         cart.addLineItem(new LineItem(warAndPeace, 1));
         LineItem toothbrushes = new LineItem(toothbrush, 2);
+        //toothbrushes.setQuantity(999)
         cart.addLineItem(toothbrushes);
         System.out.println(cart.getTotalCost());
 
@@ -47,3 +48,4 @@ public class Demo {
         } while (shippingUnfinished);
     }
 }
+
