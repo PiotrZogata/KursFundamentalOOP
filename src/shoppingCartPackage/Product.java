@@ -1,33 +1,34 @@
 package shoppingCartPackage;
 
-public class Product {
+public abstract class Product {
 
-    private final String name;
-    private int price;
-    private ProductType type;
-    private int discount;
-    private int weight;
+    public final String name;
+    public int price;
+    private int productDiscount;
 
-
-    public Product(String name, int price, ProductType type, int weight){
+    public Product(String name, int price){
         this.name = name;
         this.price = price;
-        this.type = type;
-        this.weight = weight;
     }
 
     public int getPrice() {
-        int shippingCost = type.getShippingCost(weight);
-        return Math.round((1 - discount) * price) + shippingCost;
+        int shippingCost = calculateShippingCost();
+        return Math.round((1 - productDiscount) * price) + shippingCost;
     }
+
+    protected abstract int calculateShippingCost();
+
+    public void setProductDiscount(int productDiscount) {
+        this.productDiscount = productDiscount;
+    }
+
 
     @Override
     public String toString() {
         return "Product{" +
                 "name='" + name + '\'' +
                 ", price=" + price +
-                ", type=" + type +
-                ", weight=" + weight +
+                ", discount=" + productDiscount +
                 '}';
     }
 }

@@ -24,4 +24,11 @@ public class BusinessCustomer  extends Customer {
                 throw new AssertionError("Unknown size type" + this);
         }
     }
+
+    @Override
+    public String toString() {
+        return  "BusinessCustomer{" + super.toString()  +
+                "size=" + size +
+                '}';
+    }
 }

@@ -5,6 +5,7 @@ import orderPackage.Payment;
 import shoppingCartPackage.ShoppingCart;
 
 import java.util.Optional;
+import java.util.UUID;
 
 public class Customer {
 
@@ -16,17 +17,21 @@ public class Customer {
         this.creditCard = new CreditCard(ccNumber);
     }
 
+    public CreditCard getCreditCard() {
+        return creditCard;
+    }
+
     public Optional<Order> checkout(ShoppingCart cart){
         Optional<Payment> payment =
                 creditCard.mkPayment(cart.getTotalCost());
         //return payment.isPresent() ? new orderPackage.Order(this, cart, payment.get()) : Optional.empty();
         return payment.map(value -> new Order(this, cart, value));
+
     }
 
     public int calculateDiscount() {
         return 0;
     }
-
 
     @Override
     public String toString() {
@@ -36,3 +41,17 @@ public class Customer {
                 '}';
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

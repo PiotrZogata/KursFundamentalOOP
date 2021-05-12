@@ -1,3 +1,4 @@
+import customerPackage.BusinessCustomer;
 import customerPackage.Customer;
 import orderPackage.Order;
 import shoppingCartPackage.Catalogue;
@@ -20,12 +21,19 @@ public class Demo {
         cart.addLineItem(new LineItem(warAndPeace, 1));
         LineItem toothbrushes = new LineItem(toothbrush, 2);
         //toothbrushes.setQuantity(999)
+
         cart.addLineItem(toothbrushes);
         System.out.println(cart.getTotalCost());
 
         Customer johnDoe = new Customer("John Doe", 5420793615183044L);
+        //Customer johnDoe = new BusinessCustomer("John Doe", 5420793615183044L, BusinessCustomer.BusinessSize.LARGE);
+
+
+
+
         Optional<Order> order = johnDoe.checkout(cart);
         System.out.println(order);
+
 
         order.ifPresent(Demo::fulfil);
         System.out.println(order);

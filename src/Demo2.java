@@ -22,6 +22,7 @@ public class Demo2 {
         // Java 8
         List<Customer> customers = Arrays.asList(janeDoe, acme, globex, saveTheWorld);
 
+
         // Java 9+ idiom
         // List<Customer> customers = List.of(janeDoe, acme, globex, saveTheWorld);
 

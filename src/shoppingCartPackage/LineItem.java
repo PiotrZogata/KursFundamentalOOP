@@ -6,8 +6,8 @@ import java.util.function.Predicate;
 
 public class LineItem {
 
-    private Product product;
-    private int quantity;
+    private final Product product;
+    private final int quantity;
 
     public LineItem(Product product, int quantity) {
         this.product = product;
@@ -21,6 +21,10 @@ public class LineItem {
     //Constructor
     public LineItem(LineItem li) {
         this(li.product, li.quantity);
+    }
+
+    public int calculateShippingCost() {
+        return product.calculateShippingCost() * quantity;
     }
 
     public Product getProduct(){
