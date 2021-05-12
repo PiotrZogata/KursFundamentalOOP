@@ -2,42 +2,48 @@ package customerPackage;
 
 import orderPackage.Order;
 import orderPackage.Payment;
+import orderPackage.PaymentMethod;
 import shoppingCartPackage.ShoppingCart;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-public class Customer {
+public class Customer implements Comparable<Customer> {
 
     private final String name;
-    private CreditCard creditCard;
+    private Map<String, PaymentMethod> paymentMethods = new HashMap<>();
 
-    public Customer(String name, long ccNumber){
+    public Customer(String name) {
         this.name = name;
-        this.creditCard = new CreditCard(ccNumber);
     }
 
-    public CreditCard getCreditCard() {
-        return creditCard;
-    }
-
-    public Optional<Order> checkout(ShoppingCart cart){
-        Optional<Payment> payment =
-                creditCard.mkPayment(cart.getTotalCost());
-        //return payment.isPresent() ? new orderPackage.Order(this, cart, payment.get()) : Optional.empty();
-        return payment.map(value -> new Order(this, cart, value));
-
+    public void addPaymentMethod(String nickname, PaymentMethod paymentMethod) {
+        paymentMethods.put(nickname, paymentMethod);
     }
 
     public int calculateDiscount() {
         return 0;
     }
 
+    public Optional<Order> checkout(ShoppingCart cart, String paymentMethodNickname) {
+        Optional<PaymentMethod> paymentMethod =
+                Optional.ofNullable(paymentMethods.get(paymentMethodNickname));
+        Optional<Payment> payment = paymentMethod.flatMap(pm -> pm.mkPayment(cart.getTotalCost()));
+        return payment.map(value -> new Order(this, cart, value));
+    }
+
+    @Override
+    public int compareTo(Customer o) {
+        return name.compareTo(o.name);
+    }
+
     @Override
     public String toString() {
         return "Customer{" +
                 "name='" + name + '\'' +
-                ", creditCard=" + creditCard +
+                ", paymentMethods=" + paymentMethods +
                 '}';
     }
 }
