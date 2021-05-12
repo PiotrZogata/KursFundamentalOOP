@@ -1,11 +1,12 @@
 package customerPackage;
 
 import orderPackage.Payment;
+import orderPackage.PaymentMethod;
 
 import java.util.Optional;
 import java.util.UUID;
 
-public class CreditCard {
+public class CreditCard implements PaymentMethod {
 
 // final a unique number of card
     private  final long cardNumber;
@@ -13,8 +14,6 @@ public class CreditCard {
     CreditCard(long cardNumber){
         this.cardNumber = cardNumber;
     }
-
-    //giving transaction 70% success, if does than in CreditCard an object orderPackage.Payment is made, using unique number
 
     public Optional <Payment> mkPayment(int value){
         if (Math.random() > 0.3){

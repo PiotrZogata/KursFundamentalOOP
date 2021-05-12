@@ -7,7 +7,7 @@ public class EftAccount implements PaymentMethod {
 
     private final String emailAddress;
 
-    EftAccount(String emailAddress) {
+    public EftAccount(String emailAddress) {
         this.emailAddress = emailAddress;
     }
 
