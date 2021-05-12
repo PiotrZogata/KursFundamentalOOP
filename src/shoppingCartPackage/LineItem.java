@@ -23,12 +23,13 @@ public class LineItem {
         this(li.product, li.quantity);
     }
 
-    public int calculateShippingCost() {
-        return product.calculateShippingCost() * quantity;
-    }
-
     public Product getProduct(){
         return product;
+    }
+
+    public int getPrice() {
+        PriceCalculator priceCalculator = product.createPriceCalculator();
+        return priceCalculator.calculatePrice(quantity);
     }
 
     @Override
@@ -37,9 +38,5 @@ public class LineItem {
                 "product=" + product +
                 ", quantity=" + quantity +
                 '}';
-    }
-
-    public int getPrice(){
-        return product.getPrice() * quantity;
     }
 }

@@ -12,11 +12,16 @@ public class Demo4 {
         // create a payment with the same characteristics but with added verification
         PaymentIntf highValuePayment = new HighValuePayment(payment);
 
+
+
         // make a reversible payment from either one 
         ReversiblePayment reversiblePayment = new ReversiblePayment(payment);
+
         System.out.println(reversiblePayment);
         ReversiblePayment reversibleHighValuePayment = new ReversiblePayment(highValuePayment);
         System.out.println(reversibleHighValuePayment);
+
+
     }
 
 }

@@ -17,10 +17,10 @@ public class Demo3 {
         cart.addLineItem(toothbrushes);
 
         // calculate the total shipping cost for the cart
-        int totalShippingCost = cart.getLineItems().stream()
-                .mapToInt(LineItem::calculateShippingCost)
-                .sum();
+//        int totalShippingCost = cart.getLineItems().stream()
+//                .mapToInt(LineItem::calculateShippingCost)
+//                .sum();
 
-        System.out.println(totalShippingCost);
+        //       System.out.println(totalShippingCost);
     }
 }
