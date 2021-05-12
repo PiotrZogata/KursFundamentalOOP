@@ -1,6 +1,6 @@
 package shoppingCartPackage;
 
-public abstract class Product implements Comparable<Product> {
+public abstract class Product implements Shippable, Comparable<Product> {
 
     private String name;
     private int basePrice;

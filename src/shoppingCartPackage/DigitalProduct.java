@@ -10,4 +10,9 @@ public class DigitalProduct extends Product {
     public PriceCalculator createPriceCalculator() {
         return new DigitalProductPriceCalculator(this);
     }
+
+    @Override
+    public void ship() {
+        // make product available for download
+    }
 }

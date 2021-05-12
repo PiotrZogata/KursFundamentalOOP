@@ -1,6 +1,6 @@
 package shoppingCartPackage;
 
-public class PhysicalProduct extends  Product{
+public class PhysicalProduct extends  Product implements Replaceable{
 
     public enum ShippingCategory {
         BULKY, STANDARD, PREMIUM;
@@ -26,5 +26,20 @@ public class PhysicalProduct extends  Product{
     @Override
     public PriceCalculator createPriceCalculator() {
         return new PhysicalProductPriceCalculator(this);
+    }
+
+    @Override
+    public void ship() {
+        switch (shippingCategory) {
+            case STANDARD: // consign to standard courier
+            case BULKY:    // book large-capacity vehicle and movers
+            case PREMIUM:  // buy insurance and consign to secure courier
+        }
+    }
+
+    @Override
+    public void replace() {
+        // buy special insurance
+        ship();
     }
 }
